@@ -1,0 +1,109 @@
+<div class="container">
+  <h1>My phone book</h1>
+  <hr />
+  <div class="search-input">
+    <input
+      type="text"
+      [(ngModel)]="field"
+      class="form-control input"
+      placeholder="search text goes here"
+    />
+    <button type="button" class="btn btn-success">Add phone</button>
+  </div>
+  <hr />
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">First name</th>
+        <th scope="col">Last name</th>
+        <th scope="col">Number</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let user of users | search : field; index as i">
+      <tr>
+        <td>
+          {{ user.firstname }}
+        </td>
+        <td>
+          {{ user.lastname }}
+        </td>
+        <td>
+          {{ user.number }}
+        </td>
+        <td>
+          <button class="btn btn-warning w-100" (click)="editUser(i)">
+            Edit
+          </button>
+        </td>
+        <td>
+          <button
+            class="btn btn-danger w-100"
+            (click)="deleteUser(i)"
+            [disabled]="editStatus"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="modal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modal title</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <p>Modal body text goes here.</p>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <tbody *ngFor="let user of users; index as i | searchname:field">
+      <tr>
+        <td>
+          {{ user.firstname }}
+        </td>
+        <td>
+          {{ user.lastname }}
+        </td>
+        <td>
+          {{ user.number }}
+        </td>
+        <td>
+          <button class="btn btn-warning w-100" (click)="editUser(i)">
+            Edit
+          </button>
+        </td>
+        <td>
+          <button
+            class="btn btn-danger w-100"
+            (click)="deleteUser(i)"
+            [disabled]="editStatus"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody> -->
+</div>
