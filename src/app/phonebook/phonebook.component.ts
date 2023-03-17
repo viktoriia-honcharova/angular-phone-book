@@ -15,6 +15,12 @@ export class PhonebookComponent {
   public currentLastName!: string;
   public currentNumber!: string;
 
+  public type = 'asc';
+  public sortType!: string;
+  public arrowF = '';
+  public arrowL = '';
+  public arrowN = '';
+
   public users: IUser[] = [
     {
       firstname: 'Viktoriia',
@@ -42,6 +48,13 @@ export class PhonebookComponent {
       number: '5560983321',
     },
   ];
+
+  cleanData(): void {
+    this.currentName = '';
+    this.currentLastName = '';
+    this.currentNumber = '';
+  }
+
   deleteUser(index: number): void {
     this.users.splice(index, 1);
   }
@@ -65,6 +78,8 @@ export class PhonebookComponent {
 
     this.editStatus = false;
     this.showModal = false;
+
+    this.cleanData();
   }
 
   addUser(): void {
@@ -75,6 +90,42 @@ export class PhonebookComponent {
     };
     this.users.push(user);
     this.showModal = false;
+  }
+
+  changeSort(sortT: string) {
+    if (this.type === 'asc') {
+      this.type = 'desc';
+    } else {
+      this.type = 'asc';
+    }
+    if (this.type === 'asc' && sortT === 'firstname') {
+      this.arrowF = '▼';
+      this.arrowL = '';
+      this.arrowN = '';
+    } else if (this.type === 'desc' && sortT === 'firstname') {
+      this.arrowF = '▲';
+      this.arrowL = '';
+      this.arrowN = '';
+    }
+    if (this.type === 'asc' && sortT === 'lastname') {
+      this.arrowL = '▼';
+      this.arrowF = '';
+      this.arrowN = '';
+    } else if (this.type === 'desc' && sortT === 'lastname') {
+      this.arrowL = '▲';
+      this.arrowF = '';
+      this.arrowN = '';
+    }
+    if (this.type === 'asc' && sortT === 'number') {
+      this.arrowN = '▼';
+      this.arrowL = '';
+      this.arrowF = '';
+    } else if (this.type === 'desc' && sortT === 'number') {
+      this.arrowN = '▲';
+      this.arrowL = '';
+      this.arrowF = '';
+    }
+    this.sortType = sortT;
   }
 }
 

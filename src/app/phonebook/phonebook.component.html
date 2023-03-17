@@ -23,14 +23,23 @@
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">First name</th>
-        <th scope="col">Last name</th>
-        <th scope="col">Number</th>
+        <th scope="col" (click)="changeSort('firstname')">
+          First name {{ arrowF }}
+        </th>
+        <th scope="col" (click)="changeSort('lastname')">
+          Last name {{ arrowL }}
+        </th>
+        <th scope="col" (click)="changeSort('number')">Number {{ arrowN }}</th>
         <th scope="col">Edit</th>
         <th scope="col">Delete</th>
       </tr>
     </thead>
-    <tbody *ngFor="let user of users | search : field; index as i">
+    <tbody
+      *ngFor="
+        let user of users | search : field | sort : type : sortType;
+        index as i
+      "
+    >
       <tr>
         <td>
           {{ user.firstname }}

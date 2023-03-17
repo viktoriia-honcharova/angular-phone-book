@@ -6,9 +6,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PhonebookComponent } from './phonebook/phonebook.component';
 import { SearchnamePipe } from './phonebook/search.pipe';
+import { SortPipe } from './phonebook/sort.pipe';
 
 @NgModule({
-  declarations: [AppComponent, PhonebookComponent, SearchnamePipe],
+  declarations: [AppComponent, PhonebookComponent, SearchnamePipe, SortPipe],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
