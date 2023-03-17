@@ -66,6 +66,8 @@ export class PhonebookComponent {
     this.currentName = this.users[index].firstname;
     this.currentLastName = this.users[index].lastname;
     this.currentNumber = this.users[index].number;
+
+    this.cleanData();
   }
 
   saveEditUser(): void {
